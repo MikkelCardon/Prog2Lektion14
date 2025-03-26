@@ -166,6 +166,11 @@ public class LinkedList<E> implements ListEaaa<E>{
             Node<E> previousNode = null;
             for (int i = 0; i < size; i++) {
                 if (i == index){
+                    if (index == size-1){
+                        previousNode.next = null;
+                        tail = previousNode;
+                        return currentNode.element;
+                    }
                     previousNode.next = currentNode.next;
                     size--;
                     return currentNode.element;

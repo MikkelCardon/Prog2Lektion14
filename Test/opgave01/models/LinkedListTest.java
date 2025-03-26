@@ -219,15 +219,44 @@ class LinkedListTest<List> {
 
         assertEquals(1, linkedList.get(0));
         assertEquals(3, linkedList.head.next.element);
+    }
 
+    @Test
+    void testRemoveFirst() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
 
+        linkedList.remove(0);
+
+        assertEquals(2, linkedList.head.element);
+    }
+
+    @Test
+    void testRemoveLast() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        assertEquals(3, linkedList.remove(2));
+        assertEquals(2, linkedList.tail.element);
     }
 
     @Test
     void indexOf() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        assertEquals(2, linkedList.indexOf((Integer)3));
     }
 
     @Test
-    void iterator() {
+    void indexOfItemNotInList() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        assertEquals(-1, linkedList.indexOf((Integer)5));
     }
 }
