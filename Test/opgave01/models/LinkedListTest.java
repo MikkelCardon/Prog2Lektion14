@@ -186,6 +186,7 @@ class LinkedListTest<List> {
 
         assertTrue(linkedList.contains(2));
         assertFalse(linkedList.contains(4));
+        assertTrue(linkedList.contains(3));
     }
 
     @Test

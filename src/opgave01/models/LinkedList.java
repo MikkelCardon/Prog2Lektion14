@@ -75,8 +75,13 @@ public class LinkedList<E> implements ListEaaa<E>{
     public E removeFirst() {
         if (size == 0){
            return null;
-        }
-        else{
+        } else if (size == 1) {
+            Node<E> temp = head;
+            head = null;
+            tail = null;
+            size--;
+            return temp.element;
+        } else{
             Node<E> tempHead = head;
             head = head.next;
             size--;
@@ -90,7 +95,7 @@ public class LinkedList<E> implements ListEaaa<E>{
     @Override
     public boolean contains(E e) {
         Node<E> currentNode = head;
-        for (int i = 0; i < size-1; i++) {
+        for (int i = 0; i < size; i++) {
             if (currentNode.element == e){
                 return true;
             }
