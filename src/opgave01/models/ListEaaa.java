@@ -28,7 +28,7 @@ public interface ListEaaa<E> extends Iterable<E> {
      * remove the first element in this list
      * @throws java.util.NoSuchElementException if this list is empty
      */
-    void removeFirst();
+    E removeFirst();
 
     /**
      * Return true, if this list contains the element.
