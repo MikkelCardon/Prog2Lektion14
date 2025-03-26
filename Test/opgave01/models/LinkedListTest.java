@@ -15,6 +15,11 @@ class LinkedListTest<List> {
     @BeforeEach
     void setUp() {
         linkedList = new LinkedList<>();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -162,38 +167,60 @@ class LinkedListTest<List> {
 
     @Test
     void removeFirst() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        linkedList.removeFirst();
+
+        assertEquals(2, linkedList.head.element);
+        assertEquals(2, linkedList.get(0));
+        assertEquals(3, linkedList.get(1));
     }
 
     @Test
     void contains() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+
+        assertTrue(linkedList.contains(2));
+        assertFalse(linkedList.contains(4));
     }
 
     @Test
     void clear() {
-    }
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
 
-    @Test
-    void size() {
+        linkedList.clear();
+        assertNull(linkedList.head);
+        assertNull(linkedList.tail);
+        assertEquals(0, linkedList.size);
     }
 
     @Test
     void isEmpty() {
+        assertTrue(linkedList.isEmpty());
+        linkedList.add(1);
+        assertFalse(linkedList.isEmpty());
+        linkedList.removeFirst();
+        assertTrue(linkedList.isEmpty());
     }
 
     @Test
-    void get() {
-    }
+    void testRemoveIndex() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
 
-    @Test
-    void getRecurssion() {
-    }
+        linkedList.remove(1);
 
-    @Test
-    void testAdd() {
-    }
+        assertEquals(1, linkedList.get(0));
+        assertEquals(3, linkedList.head.next.element);
 
-    @Test
-    void testRemove() {
+
     }
 
     @Test
